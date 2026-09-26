@@ -1,0 +1,352 @@
+<div class="jar-card" onclick="openJar(6)">
+        <div class="jar">🏠</div>
+        <div class="jar-title">Open when you miss home</div>
+      </div>
+
+      <div class="jar-card" onclick="openJar(7)">
+        <div class="jar">🫶</div>
+        <div class="jar-title">Open when you need some love</div>
+      </div>
+
+    </div>
+
+    <p class="small">
+      Made with love, memories and a little sibling bullying. 😂
+    </p>
+
+  </div>
+</div>
+
+
+<!-- =========================
+     NOTE PAGE
+========================= -->
+
+<div id="notes" class="screen">
+
+  <div class="container">
+
+    <button class="back" onclick="goHome()">
+      ← Back to jars
+    </button>
+
+    <div class="decor">♡ 💌 ♡</div>
+
+    <h2 id="jarHeading">Open when...</h2>
+,
+    <div class="note-area">
+
+      <div class="note">
+
+        <div id="noteText" class="note-text">
+          Your surprise is waiting... 💌
+        </div>
+
+        <img id="noteImage" class="photo">
+
+      </div>
+
+      <button class="open-button" onclick="openAnother()">
+        Open another 💌
+      </button>
+
+    </div>
+
+    <p class="small">
+      There are more surprises inside. 👀
+    </p>
+
+  </div>
+</div>
+
+
+<script>
+
+/* =====================================================
+   💗 YOUR MESSAGES + PICTURES GO HERE
+   =====================================================
+
+   IMPORTANT:
+
+   text = your message
+
+   image = your picture
+
+   If you don't want a picture for a particular note,
+   simply leave image as "".
+
+   Example:
+
+   {
+     text: "I miss you so much!",
+     image: "images/miss1.jpg"
+   }
+
+   ===================================================== */
+
+
+const jars = [
+
+  /* 1. MISS ME */
+  {
+    title: "Open when you miss me 🩷",
+
+    notes: [
+      {
+        text: "I miss annoying you in person too. 😭❤️",
+        image: ""
+      },
+
+      {
+        text: "Remember that no matter how far away you are, you still have to deal with me.",
+        image: ""
+      },
+
+      {
+        text: "This is your official reminder that your favourite sibling misses you.",
+        image: ""
+      }
+    ]
+  },
+
+
+  /* 2. FEELING DOWN */
+  {
+    title: "Open when you're feeling down 💙",
+
+    notes: [
+      {
+        text: "Hey. Take a breath. You don't have to have everything figured out right now. ❤️",
+        image: ""
+      },
+
+      {
+        text: "Whatever happened today, tomorrow is another chance.",
+        image: ""
+      },
+
+      {
+        text: "Sending you one giant sibling hug. Don't complain. 🫂",
+        image: ""
+      }
+    ]
+  },
+
+
+  /* 3. ANGRY */
+  {
+    title: "Open when you're angry ❤️",
+
+    notes: [
+      {
+        text: "Okay angry person, breathe. 😂",
+        image: ""
+      },
+
+      {
+        text: "Before you do anything dramatic, remember that I'm watching. 👀",
+        image: ""
+      },
+
+      {
+        text: "Drink some water. Calm down. Then continue being dramatic.",
+        image: ""
+      }
+    ]
+  },
+
+
+  /* 4. MOTIVATION */
+  {
+    title: "Open when you need motivation 💛",
+
+    notes: [
+      {
+        text: "You have survived every difficult day you've had so far. That's pretty impressive.",
+        image: ""
+      },
+
+      {
+        text: "Keep going. Future you is going to thank you.",
+        image: ""
+      },
+
+      {
+        text: "I believe in you, idiot. Now go do the thing. 💪",
+        image: ""
+      }
+    ]
+  },
+
+
+  /* 5. FEEL LIKE TALKING */
+  {
+    title: "Open when you feel like talking 💜",
+
+    notes: [
+      {
+        text: "Okay. I'm listening. Tell me everything.",
+        image: ""
+      },
+
+      {
+        text: "You can call me and talk about literally anything.",
+        image: ""
+      },
+
+      {
+        text: "What's the latest gossip? 👀",
+        image: ""
+      }
+    ]
+  },
+
+
+  /* 6. NEED TO LAUGH */
+  {
+    title: "Open when you need to laugh 😂",
+
+    notes: [
+      {
+        text: "Congratulations. You opened the jar instead of doing something productive.",
+        image: ""
+      },
+
+      {
+        text: "Remember: I'm still the funnier sibling.",
+        image: ""
+      },
+      {
+        text: "If you're reading this while laughing, you're welcome.",
+        image: ""
+      }
+    ]
+  },
+
+
+  /* 7. MISS HOME */
+  {
+    title: "Open when you miss home 🏠",
+
+    notes: [
+      {
+        text: "Home is still home, even when you're far away. ❤️",
+        image: ""
+      },
+
+      {
+        text: "Consider this a tiny piece of home delivered to you.",
+        image: ""
+      },
+
+      {
+        text: "We'll make more memories together when you're back.",
+        image: ""
+      }
+    ]
+  },
+
+
+  /* 8. NEED SOME LOVE */
+  {
+    title: "Open when you need some love 🫶",
+
+    notes: [
+      {
+        text: "You are loved more than you probably realise. ❤️",
+        image: ""
+      },
+
+      {
+        text: "No matter how far away you are, you're still my brother and I'm still stuck with you.",
+        image: ""
+      },
+
+      {
+        text: "Happy birthday, idiot. Love you always. 🫶",
+        image: ""
+      }
+    ]
+  }
+
+];
+
+
+/* =====================================================
+   DON'T CHANGE ANYTHING BELOW THIS LINE
+   ===================================================== */
+
+let currentJar = 0;
+let remainingNotes = [];
+
+
+function openJar(number) {
+
+  currentJar = number;
+
+  document.getElementById("home").classList.remove("active");
+  document.getElementById("notes").classList.add("active");
+
+  document.getElementById("jarHeading").textContent =
+    jars[number].title;
+
+  remainingNotes = [...jars[number].notes];
+
+  openAnother();
+}
+
+
+function openAnother() {
+
+  if (remainingNotes.length === 0) {
+    remainingNotes = [...jars[currentJar].notes];
+  }
+
+  const randomIndex =
+    Math.floor(Math.random() * remainingNotes.length);
+
+  const chosen =
+    remainingNotes.splice(randomIndex, 1)[0];
+
+  document.getElementById("noteText").textContent =
+    chosen.text;
+
+  const image =
+    document.getElementById("noteImage");
+
+  if (chosen.image && chosen.image !== "") {
+
+    image.src = chosen.image;
+    image.style.display = "block";
+
+    image.onerror = function() {
+      image.style.display = "none";
+    };
+
+  } else {
+
+    image.style.display = "none";
+    image.removeAttribute("src");
+
+  }
+
+  document.querySelector(".note").style.animation = "none";
+
+  setTimeout(function() {
+    document.querySelector(".note").style.animation =
+      "appear 0.35s ease";
+  }, 10);
+}
+
+
+function goHome() {
+
+  document.getElementById("notes").classList.remove("active");
+  document.getElementById("home").classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>
