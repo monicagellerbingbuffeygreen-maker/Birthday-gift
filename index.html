@@ -1,4 +1,232 @@
-<div class="jar-card" onclick="openJar(6)">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Corner of Home 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", sans-serif;
+  background: linear-gradient(135deg, #ffe4ef, #eee5ff, #dff5ff);
+  color: #684d68;
+  text-align: center;
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 30px 16px;
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  color: #c75b91;
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+h2 {
+  color: #b45b8c;
+  font-family: Georgia, serif;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.decor {
+  font-size: 25px;
+  margin: 10px;
+}
+
+/* JARS */
+
+.jar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.jar-card {
+  border: 3px solid white;
+  border-radius: 25px;
+  padding: 22px 12px;
+  background: #ffffffcc;
+  box-shadow: 0 8px 25px #8f719933;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.jar-card:active {
+  transform: scale(0.94);
+}
+
+.jar {
+  font-size: 70px;
+}
+
+.jar-title {
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.back {
+  border: 0;
+  background: white;
+  color: #a65d8b;
+  padding: 10px 17px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* NOTES */
+
+.note-area {
+  margin-top: 25px;
+}
+
+.note {
+  background: #fff9d9;
+  border: 2px dashed #e2a7b8;
+  border-radius: 25px;
+  padding: 25px 18px;
+  min-height: 170px;
+  box-shadow: 0 8px 25px #98775b22;
+  animation: appear 0.35s ease;
+}
+
+.note-text {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 330px;
+  border-radius: 18px;
+  margin-top: 20px;
+  box-shadow: 0 6px 18px #00000022;
+  display: none;
+}
+
+.open-button {
+  margin-top: 20px;
+  border: 0;
+  background: #df82ad;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #bd668f;
+  cursor: pointer;
+}
+
+.open-button:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.small {
+  font-size: 13px;
+  color: #987595;
+  margin-top: 18px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (min-width: 650px) {
+  .jar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     MAIN PAGE
+========================= -->
+
+<div id="home" class="screen active">
+  <div class="container">
+
+    <div class="decor">♡ ✿ ⋆ 🫙 ⋆ ✿ ♡</div>
+
+    <h1>A Little Corner of Home ♡</h1>
+
+    <p class="subtitle">
+      For my favourite idiot.<br>
+      Pick a jar and open it whenever you need me. 💗
+    </p>
+
+    <div class="jar-grid">
+
+      <div class="jar-card" onclick="openJar(0)">
+        <div class="jar">🩷</div>
+        <div class="jar-title">Open when you miss me</div>
+      </div>
+
+      <div class="jar-card" onclick="openJar(1)">
+        <div class="jar">💙</div>
+        <div class="jar-title">Open when you're feeling down</div>
+      </div>
+
+      <div class="jar-card" onclick="openJar(2)">
+        <div class="jar">❤️</div>
+        <div class="jar-title">Open when you're angry</div>
+      </div>
+
+      <div class="jar-card" onclick="openJar(3)">
+        <div class="jar">💛</div>
+        <div class="jar-title">Open when you need motivation</div>
+      </div>
+
+      <div class="jar-card" onclick="openJar(4)">
+        <div class="jar">💜</div>
+        <div class="jar-title">Open when you feel like talking</div>
+      </div>
+
+      <div class="jar-card" onclick="openJar(5)">
+        <div class="jar">😂</div>
+        <div class="jar-title">Open when you need to laugh</div>
+      </div>
+      <div class="jar-card" onclick="openJar(6)">
         <div class="jar">🏠</div>
         <div class="jar-title">Open when you miss home</div>
       </div>
@@ -33,7 +261,7 @@
     <div class="decor">♡ 💌 ♡</div>
 
     <h2 id="jarHeading">Open when...</h2>
-,
+
     <div class="note-area">
 
       <div class="note">
@@ -216,7 +444,7 @@ const jars = [
         text: "Remember: I'm still the funnier sibling.",
         image: ""
       },
-      {
+            {
         text: "If you're reading this while laughing, you're welcome.",
         image: ""
       }
